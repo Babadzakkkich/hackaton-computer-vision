@@ -1,0 +1,17 @@
+names:
+  0: Oil_Can_Opener
+  1: Pliers
+  2: Screwdriver -
+  3: Sharnitsa
+  4: Brace
+  5: Screwdriver +
+  6: Horn_Cap_Wrench 3/4
+  7: Adjustable_Wrench
+  8: Contouring_Pliers
+  9: Side_Cutters
+  10: Screwdriver_On_The_Offset_Cross
+nc: 11
+path: hackaton_dataset
+test: images/test
+train: images/train
+validation: images/val
