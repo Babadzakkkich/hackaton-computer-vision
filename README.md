@@ -28,7 +28,8 @@
    cd tool-recognition-service
 
 2. Запустить сервис через Docker Compose:
-    ```docker compose up -d
+    ```bash
+    docker compose up -d
 
 ## После запуска
 - Frontend доступен по адресу: http://localhost:3000
