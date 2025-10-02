@@ -1,0 +1,37 @@
+services:
+  backend:
+    build:
+      context: ./backend
+    container_name: tool-recognition-backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - backend_results:/app/src/results
+      - ./backend/weights:/app/weights:ro 
+    environment:
+      - PYTHONPATH=/app/src
+      - ML_DATA_YAML_PATH=data/data.yaml
+    restart: unless-stopped
+    networks:
+      - tool-recognition-network
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: tool-recognition-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - VITE_API_BASE_URL=http://backend:8000
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - tool-recognition-network
+
+networks:
+  tool-recognition-network:
+    driver: bridge
+
+volumes:
+  backend_results:

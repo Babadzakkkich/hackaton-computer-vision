@@ -1,0 +1,49 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+.python-version
+
+# Build and distribution
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Testing
+.coverage
+.htmlcov
+.pytest_cache/
+.tox/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+
+# Docker
+Dockerfile*
+docker-compose*
+.dockerignore
+
+# Логи
+*.log
+logs/
+
+# Временные файлы
+*.tmp
+*.temp

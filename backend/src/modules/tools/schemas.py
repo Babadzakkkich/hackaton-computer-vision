@@ -1,11 +1,21 @@
 from pydantic import BaseModel
-from typing import List, Optional
+from typing import List, Optional, Dict
 
 class DetectionItem(BaseModel):
     class_id: int
     class_name: str
     confidence: float
-    bbox: List[float]  # [x1, y1, x2, y2]
+    bbox: List[float]
+
+class AnalysisResult(BaseModel):
+    status: str
+    total_detections: int
+    expected_count: int = 11
+    missing_tools: List[str] = []
+    extra_tools: List[str] = []
+    detected_tools: List[str] = []
+    detections: List[DetectionItem]
+    message: str
 
 class AnalysisConfig(BaseModel):
     confidence_threshold: float
@@ -16,25 +26,19 @@ class AnalysisConfig(BaseModel):
 
 class SingleAnalysisResponse(BaseModel):
     status: str
-    total_detections: int
-    detections: List[DetectionItem]
-    message: Optional[str] = None
+    analysis_result: AnalysisResult
     config: AnalysisConfig
 
 class ImageAnalysisResult(BaseModel):
     filename: str
-    status: str
-    total_detections: int
-    detections: List[DetectionItem]
-    message: Optional[str] = None
+    analysis_result: AnalysisResult
     annotated_image_path: Optional[str] = None
 
 class BatchAnalysisResponse(BaseModel):
     status: str
     total_images: int
     processed_images: int
-    total_detections: int
     results: List[ImageAnalysisResult]
     processing_time: float
-    message: Optional[str] = None
+    summary: Dict[str, int]  # Статистика по статусам
     config: Optional[AnalysisConfig] = None
