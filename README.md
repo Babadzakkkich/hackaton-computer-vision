@@ -24,8 +24,8 @@
 
 1. Клонировать репозиторий:
    ```bash
-   git clone https://github.com/your-username/tool-recognition-service.git
-   cd tool-recognition-service
+   git clone https://github.com/Babadzakkkich/hackaton-computer-vision
+   cd hackaton-computer-vision
 
 2. Запустить сервис через Docker Compose:
     ```bash
