@@ -1,8 +1,8 @@
 from pydantic_settings import BaseSettings
 
 class MLConfig(BaseSettings):
-    confidence_threshold: float = 0.25
-    iou_threshold: float = 0.45
+    confidence_threshold: float = 0.5
+    iou_threshold: float = 0.5
     
     class Config:
         env_prefix = "ML_"

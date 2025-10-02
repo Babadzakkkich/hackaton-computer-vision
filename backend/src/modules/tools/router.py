@@ -2,7 +2,7 @@ import os
 from fastapi import APIRouter, UploadFile, File, HTTPException, Query
 from fastapi.responses import FileResponse
 from .service import tool_service
-from .schemas import SingleAnalysisResponse, BatchAnalysisResponse, AnalysisConfig
+from .schemas import SingleAnalysisResponse, BatchAnalysisResponse
 
 router = APIRouter()
 
@@ -14,7 +14,7 @@ async def analyze_single_image(
 ):
     """
     Анализирует одно изображение с инструментами с помощью YOLO11 модели.
-    Сохраняет изображение с bounding boxes в папку results/.
+    Сохраняет обработанное изображение в папку results/.
     """
     if not file.content_type or not file.content_type.startswith('image/'):
         raise HTTPException(status_code=400, detail="Файл должен быть изображением")
@@ -79,19 +79,15 @@ async def get_image(image_path: str):
     Используется для отображения аннотированных изображений на фронтенде.
     """
     try:
-        # Безопасно формируем полный путь к изображению
         full_path = os.path.join("results", image_path)
         
-        # Проверяем, что путь находится внутри разрешенной директории
         full_path = os.path.abspath(full_path)
         if not full_path.startswith(os.path.abspath("results")):
             raise HTTPException(status_code=403, detail="Доступ запрещен")
         
-        # Проверяем существование файла
         if not os.path.exists(full_path):
             raise HTTPException(status_code=404, detail="Изображение не найдено")
         
-        # Определяем MIME-тип по расширению файла
         if full_path.lower().endswith(('.png', '.jpg', '.jpeg')):
             media_type = "image/jpeg"
         else:

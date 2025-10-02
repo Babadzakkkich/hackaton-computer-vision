@@ -1,5 +1,3 @@
-import React from 'react'
-
 const ParametersPanel = ({ parameters, onChange }) => {
   const handleChange = (key, value) => {
     onChange({

@@ -5,9 +5,6 @@ services:
     container_name: tool-recognition-backend
     ports:
       - "8000:8000"
-    volumes:
-      - backend_results:/app/src/results
-      - ./backend/weights:/app/weights:ro 
     environment:
       - PYTHONPATH=/app/src
       - ML_DATA_YAML_PATH=data/data.yaml
@@ -32,6 +29,3 @@ services:
 networks:
   tool-recognition-network:
     driver: bridge
-
-volumes:
-  backend_results:

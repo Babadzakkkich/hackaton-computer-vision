@@ -40,5 +40,5 @@ class BatchAnalysisResponse(BaseModel):
     processed_images: int
     results: List[ImageAnalysisResult]
     processing_time: float
-    summary: Dict[str, int]  # Статистика по статусам
+    summary: Dict[str, int]
     config: Optional[AnalysisConfig] = None

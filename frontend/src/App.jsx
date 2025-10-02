@@ -11,8 +11,8 @@ function App() {
   const [results, setResults] = useState(null)
   const [error, setError] = useState(null)
   const [parameters, setParameters] = useState({
-    confidence: 0.25,
-    iou: 0.45,
+    confidence: 0.5,
+    iou: 0.5,
   })
 
   const handleFileSelect = (selectedFile) => {

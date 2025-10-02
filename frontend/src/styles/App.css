@@ -119,18 +119,6 @@
   margin-bottom: 0.5rem;
 }
 
-@media (max-width: 768px) {
-  .app-container {
-    grid-template-columns: 1fr;
-    padding: 1rem;
-  }
-  
-  .left-panel {
-    position: static;
-  }
-}
-
-/* File Upload */
 .file-upload {
   margin-bottom: 1.5rem;
 }
@@ -163,7 +151,6 @@
   font-size: 0.9rem;
 }
 
-/* Parameters Panel */
 .parameters-panel h3 {
   margin-bottom: 1.5rem;
   color: #333;
@@ -191,17 +178,6 @@
   font-style: italic;
 }
 
-.parameter-checkbox {
-  margin: 1.5rem 0;
-}
-
-.parameter-checkbox label {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  cursor: pointer;
-}
-
 .parameters-info {
   background: #f0f4ff;
   padding: 1rem;
@@ -224,7 +200,6 @@
   font-size: 0.9rem;
 }
 
-/* Results Display */
 .results-header {
   display: flex;
   justify-content: space-between;
@@ -242,14 +217,12 @@
   font-weight: 600;
 }
 
-/* Vertical Results Layout */
 .results-content-vertical {
   display: flex;
   flex-direction: column;
   gap: 2rem;
 }
 
-/* Уменьшенная секция с изображением */
 .image-section-vertical {
   background: #f8f9fa;
   border-radius: 15px;
@@ -268,7 +241,6 @@
   width: 100%;
 }
 
-/* Уменьшенный размер выводимых изображений */
 .annotated-image-vertical img {
   max-width: 85%;
   max-height: 500px;
@@ -335,7 +307,6 @@
   margin-top: 0.5rem;
 }
 
-/* Info Section Vertical */
 .info-section-vertical {
   background: white;
   border-radius: 15px;
@@ -351,7 +322,6 @@
   gap: 1.5rem;
 }
 
-/* Стили для анализа полноты набора */
 .status-badge {
   padding: 1.5rem;
   border-radius: 12px;
@@ -452,7 +422,6 @@
   font-size: 1.2rem;
 }
 
-/* Compact Image Slider */
 .image-slider {
   background: white;
   padding: 1rem;
@@ -528,7 +497,6 @@
   white-space: nowrap;
 }
 
-/* Fixed Slider Container */
 .slider-container {
   width: 100%;
   max-width: 100%;
@@ -548,7 +516,6 @@
   margin: 0 auto;
 }
 
-/* Уменьшенные миниатюры */
 .slider-thumbnail {
   background: white;
   border: 2px solid #ddd;
@@ -596,7 +563,6 @@
   display: inline-block;
 }
 
-/* Improved scrollbar for slider */
 .slider-container::-webkit-scrollbar {
   height: 6px;
 }
@@ -617,13 +583,11 @@
   background: #a8a8a8;
 }
 
-/* Firefox scrollbar */
 .slider-container {
   scrollbar-width: thin;
   scrollbar-color: #c1c1c1 #f1f1f1;
 }
 
-/* Ограниченный список обнаружений со скроллом */
 .detections-list {
   background: white;
   border: 2px solid #e9ecef;
@@ -671,7 +635,6 @@
   margin-bottom: 0.3rem;
 }
 
-/* Стили для скроллбара списка обнаружений */
 .detections-list::-webkit-scrollbar {
   width: 6px;
 }
@@ -690,13 +653,11 @@
   background: #a8a8a8;
 }
 
-/* Firefox scrollbar для списка обнаружений */
 .detections-list {
   scrollbar-width: thin;
   scrollbar-color: #c1c1c1 #f1f1f1;
 }
 
-/* Loading Spinner */
 .loading-spinner {
   text-align: center;
   padding: 3rem;
@@ -724,8 +685,16 @@
   margin-top: 0.5rem;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
+  .app-container {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+  
+  .left-panel {
+    position: static;
+  }
+
   .image-section-vertical {
     padding: 1rem;
     min-height: 300px;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import ImageSlider from './ImageSlider'
 import { getImageUrl} from '../services/api'
 
@@ -18,7 +18,6 @@ const ResultsDisplay = ({ results, fileType }) => {
   const currentResult = getCurrentResult()
   const analysisResult = currentResult.analysis_result || currentResult
 
-  // Функция для получения пути к изображению
   const getAnnotatedImagePath = () => {
     if (isBatch && currentResult.annotated_image_path) {
       return currentResult.annotated_image_path
@@ -31,7 +30,6 @@ const ResultsDisplay = ({ results, fileType }) => {
 
   const annotatedImagePath = getAnnotatedImagePath()
 
-  // Загружаем изображения при изменении результатов
   useEffect(() => {
     const loadImages = async () => {
       const urls = {}
@@ -56,7 +54,6 @@ const ResultsDisplay = ({ results, fileType }) => {
     loadImages()
   }, [results, isBatch, annotatedImagePath])
 
-  // Функция для получения URL изображения
   const getImageUrlForDisplay = () => {
     if (isBatch && currentResult.annotated_image_path) {
       return imageUrls[currentResult.annotated_image_path] || getImageUrl(currentResult.annotated_image_path)
@@ -69,7 +66,6 @@ const ResultsDisplay = ({ results, fileType }) => {
 
   const imageUrl = getImageUrlForDisplay()
 
-  // Функция для получения цвета статуса
   const getStatusColor = (status) => {
     switch (status) {
       case 'complete': return '#28a745'
@@ -104,7 +100,6 @@ const ResultsDisplay = ({ results, fileType }) => {
       )}
 
       <div className="results-content-vertical">
-        {/* Секция с изображением */}
         <div className="image-section-vertical">
           {imageUrl ? (
             <div className="annotated-image-vertical">
@@ -114,7 +109,6 @@ const ResultsDisplay = ({ results, fileType }) => {
                 onError={(e) => {
                   console.error('Ошибка загрузки изображения:', imageUrl)
                   e.target.style.display = 'none'
-                  // Показываем fallback контент
                   const placeholder = e.target.parentElement.querySelector('.image-fallback')
                   if (placeholder) placeholder.style.display = 'block'
                 }}
@@ -153,7 +147,6 @@ const ResultsDisplay = ({ results, fileType }) => {
           )}
         </div>
 
-        {/* Остальной код компонента остается без изменений */}
         <div className="info-section-vertical">
           <div className="info-grid">
             {/* Статус анализа */}
@@ -169,7 +162,6 @@ const ResultsDisplay = ({ results, fileType }) => {
               </div>
             </div>
 
-            {/* Отсутствующие инструменты */}
             {analysisResult.missing_tools && analysisResult.missing_tools.length > 0 && (
               <div className="missing-tools-section">
                 <h4>❌ Отсутствующие инструменты:</h4>
@@ -183,7 +175,6 @@ const ResultsDisplay = ({ results, fileType }) => {
               </div>
             )}
 
-            {/* Лишние инструменты */}
             {analysisResult.extra_tools && analysisResult.extra_tools.length > 0 && (
               <div className="extra-tools-section">
                 <h4>⚠️ Лишние инструменты:</h4>
@@ -197,7 +188,6 @@ const ResultsDisplay = ({ results, fileType }) => {
               </div>
             )}
 
-            {/* Обнаруженные инструменты */}
             {analysisResult.detections && analysisResult.detections.length > 0 && (
               <div className="detections-list">
                 <h4>🎯 Обнаруженные инструменты:</h4>
@@ -212,7 +202,6 @@ const ResultsDisplay = ({ results, fileType }) => {
               </div>
             )}
 
-            {/* Сводка по batch обработке */}
             {isBatch && results.summary && (
               <div className="batch-summary">
                 <h4>📈 Сводка по всем изображениям:</h4>

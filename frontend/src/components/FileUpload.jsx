@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import { useRef } from 'react'
 
 const FileUpload = ({ onFileSelect, selectedFile }) => {
   const fileInputRef = useRef(null)

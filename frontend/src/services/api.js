@@ -47,12 +47,10 @@ export const analyzeBatchImages = async (file, parameters) => {
 export const getImageUrl = (imagePath) => {
   if (!imagePath) return null
   
-  // Если путь абсолютный или уже содержит URL, возвращаем как есть
   if (imagePath.startsWith('http') || imagePath.startsWith('data:')) {
     return imagePath
   }
   
-  // Извлекаем относительный путь из полного пути
   let relativePath = imagePath
   if (imagePath.includes('results/')) {
     relativePath = imagePath.split('results/')[1]

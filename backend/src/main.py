@@ -8,11 +8,10 @@ from modules.tools.router import router as tools_router
 
 main_app = FastAPI(
     title="Tool Recognition API",
-    description="API для анализа инструментов с помощью YOLO11",
+    description="API для сервиса анализа инструментов",
     version="1.0.0"
 )
 
-# Подключаем роутеры
 main_app.include_router(tools_router, prefix=settings.api.tools, tags=["Tools"])
 
 
@@ -23,7 +22,6 @@ main_app.add_middleware(
     allow_methods=["*"], 
     allow_headers=["*"],
 )
-
 
 @main_app.get("/")
 async def root():

@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react'
+import { useRef, useEffect } from 'react'
 
 const ImageSlider = ({ results, currentIndex, onIndexChange }) => {
   const sliderRef = useRef(null)
@@ -12,7 +12,6 @@ const ImageSlider = ({ results, currentIndex, onIndexChange }) => {
       const sliderRect = slider.getBoundingClientRect()
       const activeRect = activeElement.getBoundingClientRect()
       
-      // Auto-scroll to keep active thumbnail visible
       if (activeRect.left < sliderRect.left) {
         slider.scrollLeft -= (sliderRect.left - activeRect.left + 10)
       } else if (activeRect.right > sliderRect.right) {
@@ -21,7 +20,6 @@ const ImageSlider = ({ results, currentIndex, onIndexChange }) => {
     }
   }, [currentIndex])
 
-  // Функция для получения иконки статуса
   const getStatusIcon = (result) => {
     const status = result.analysis_result?.status || result.status
     
@@ -38,7 +36,6 @@ const ImageSlider = ({ results, currentIndex, onIndexChange }) => {
     }
   }
 
-  // Функция для получения количества обнаружений
   const getDetectionsCount = (result) => {
     return result.analysis_result?.total_detections || result.total_detections || 0
   }
